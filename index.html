@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Аудиокнига</title>
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+  <main class="wrap">
+    <header class="book">
+      <img id="cover" class="cover" alt="" hidden>
+      <div>
+        <h1 id="book-title">Аудиокнига</h1>
+        <p id="book-author" class="author"></p>
+      </div>
+    </header>
+
+    <section class="player" aria-label="Плеер">
+      <p id="now-title" class="now">—</p>
+
+      <div class="seek-row">
+        <span id="time-cur" class="time">0:00</span>
+        <input id="seek" type="range" min="0" max="0" step="1" value="0" aria-label="Перемотка">
+        <span id="time-dur" class="time">0:00</span>
+      </div>
+
+      <div class="controls">
+        <button id="prev" title="Предыдущая глава" aria-label="Предыдущая глава" class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect class="fill" x="5" y="5" width="2.5" height="14" rx="1"/><path class="fill" d="M19 6.2v11.6a1 1 0 0 1-1.55.83L9.6 13.4a1.6 1.6 0 0 1 0-2.8l7.85-5.23A1 1 0 0 1 19 6.2z"/></svg></button>
+        <button id="play" class="play" title="Слушать" aria-label="Слушать">
+          <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+          <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+        </button>
+        <button id="next" title="Следующая глава" aria-label="Следующая глава" class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect class="fill" x="16.5" y="5" width="2.5" height="14" rx="1"/><path class="fill" d="M5 6.2v11.6a1 1 0 0 0 1.55.83l7.85-5.23a1.6 1.6 0 0 0 0-2.8L6.55 5.37A1 1 0 0 0 5 6.2z"/></svg></button>
+      </div>
+
+      <div class="extras">
+        <div class="volume">
+          <button id="mute" title="Выключить звук" aria-label="Выключить звук" class="icon"></button>
+          <input id="volume" type="range" min="0" max="1" step="0.01" value="1" aria-label="Громкость">
+        </div>
+        <label class="speed">Скорость
+          <select id="speed">
+            <option value="0.75">0.75×</option>
+            <option value="1" selected>1×</option>
+            <option value="1.25">1.25×</option>
+            <option value="1.5">1.5×</option>
+            <option value="1.75">1.75×</option>
+            <option value="2">2×</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section aria-label="Главы">
+      <h2>Главы</h2>
+      <p id="message" class="message" hidden></p>
+      <ol id="chapters" class="chapters"></ol>
+    </section>
+
+    <audio id="audio" preload="metadata"></audio>
+  </main>
+  <script src="book/chapters.js"></script>
+  <script src="player.js?v=3"></script>
+</body>
+</html>

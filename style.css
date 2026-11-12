@@ -1,0 +1,131 @@
+:root {
+  --bg: #faf7f2;
+  --card: #ffffff;
+  --text: #2a2622;
+  --muted: #6f675f;
+  --accent: #9a4a2e;
+  --accent-text: #ffffff;
+  --line: #e6dfd5;
+  --hover: #f3ede4;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b1917;
+    --card: #262320;
+    --text: #efe9e1;
+    --muted: #a89f95;
+    --accent: #e08a62;
+    --accent-text: #1b1917;
+    --line: #3a3531;
+    --hover: #302c28;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 18px/1.5 Georgia, "Iowan Old Style", serif;
+}
+.wrap { max-width: 640px; margin: 0 auto; padding: 24px 16px 48px; }
+
+.book { display: flex; align-items: center; margin-bottom: 20px; }
+.book > * + * { margin-left: 16px; }
+.cover { width: 96px; height: 96px; object-fit: cover; border-radius: 8px; flex-shrink: 0; }
+h1 { font-size: 1.6rem; margin: 0; line-height: 1.2; }
+h2 { font-size: 1.1rem; margin: 28px 0 8px; color: var(--muted); font-weight: normal; }
+.author { margin: 4px 0 0; color: var(--muted); }
+
+.player {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 16px;
+}
+.now { margin: 0 0 12px; font-size: 1.15rem; text-align: center; font-weight: bold; }
+
+.seek-row { display: flex; align-items: center; }
+.seek-row > * + * { margin-left: 10px; }
+.seek-row input { flex: 1; min-width: 0; }
+.time { font: 14px/1 ui-monospace, Menlo, monospace; color: var(--muted); min-width: 3.5em; text-align: center; }
+
+input[type=range] { accent-color: var(--accent); height: 28px; cursor: pointer; }
+
+.controls { display: flex; justify-content: center; align-items: center; margin: 14px 0; }
+.controls > * + * { margin-left: 14px; }
+button {
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+button:hover { background: var(--hover); }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.icon {
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+}
+button.icon svg { width: 26px; height: 26px; display: block; }
+button.icon .fill { fill: currentColor; }
+button.icon .stroke { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+button.icon text {
+  fill: currentColor;
+  font: 600 10px/1 -apple-system, "Helvetica Neue", Arial, sans-serif;
+  text-anchor: middle;
+}
+button.play {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+  min-width: 64px;
+  min-height: 64px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+button.play svg { width: 28px; height: 28px; fill: currentColor; display: block; }
+button.play .icon-pause { display: none; }
+button.play.playing .icon-play { display: none; }
+button.play.playing .icon-pause { display: block; }
+
+.extras { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+.volume { display: flex; align-items: center; flex: 1; min-width: 180px; margin-right: 12px; }
+.volume > * + * { margin-left: 8px; }
+.volume input { flex: 1; min-width: 0; }
+.speed { color: var(--muted); font-size: 0.95rem; }
+select {
+  font: inherit;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 8px;
+  margin-left: 6px;
+}
+
+.chapters { list-style: none; margin: 0; padding: 0; }
+.chapters li {
+  display: flex;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.chapters li:hover { background: var(--hover); }
+.chapters li.current { background: var(--card); border: 1px solid var(--line); font-weight: bold; }
+.chapters .num { margin-right: 12px; color: var(--muted); min-width: 1.8em; text-align: right; }
+.message { color: var(--muted); }
+code { font-size: 0.9em; }
